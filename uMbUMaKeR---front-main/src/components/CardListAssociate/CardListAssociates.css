@@ -1,0 +1,29 @@
+.card{
+    margin-bottom: 1vw;
+    border-color: #0c9213;
+}
+
+.left .tipo{
+    color: #0a0a09;
+    margin-left: 1px;
+    font-weight: bold;
+    font-size: 3vh;
+}
+.lb{
+    color: #0b7726;
+    font-size: 3vh;
+}
+
+
+.card-butons{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.card-butons .bt {
+    margin-right: 10px; 
+    background-color: white;
+}
+.bt{
+    margin-right: 10px;
+}
