@@ -19,7 +19,15 @@ export default props =>{
             </Card>
         }
         return(
-            <div className="card">                
+            
+            <div className="card">  
+
+                <div className="divCreat">
+                    <a href="/createAssociate">
+                         <Button className="btCreat" severity="warning" raised><FontAwesomeIcon icon={faPlus} style={{color: "#0b6429",}} /></Button>
+                    </a>
+                </div>  
+
                 <Card>
                     <div className="left">
                         <div className='divTipo'>
@@ -46,16 +54,12 @@ export default props =>{
                         </div>
                         <div className='divQrCode'>
                             <label className="lb">QrCode</label>
+                            <br/>
                             <p>QrCode</p>
                         </div>
                     </div>
 
                     <div className="card-butons">
-                        <div className="bt">
-                        <a href="/createAssociate">
-                            <Button className="bt" severity="warning" raised><FontAwesomeIcon icon={faPlus} style={{color: "#0b6429",}} /></Button>
-                        </a>
-                        </div>
 
                         <Button className="bt" onClick={e => props.editar(associate.id)}
                         title="Editar" severity="warning" aria-label="Editar">

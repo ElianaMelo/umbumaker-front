@@ -32,7 +32,7 @@
     margin-right: 20px;
 }
 
-.left .tipo{
+.left .Tipo{
     color: #0a0a09;
     margin-left: 1px;
     font-weight: bold;
@@ -41,6 +41,7 @@
 .lb{
     color: #0b7726;
     font-size: 3vh;
+    font-weight: bold;
 }
 
 
@@ -56,4 +57,12 @@
 }
 .bt{
     margin-right: 10px;
+}
+.divCreat .btCreat{
+    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-right: 25px;
+    margin-top: 25px;
 }
