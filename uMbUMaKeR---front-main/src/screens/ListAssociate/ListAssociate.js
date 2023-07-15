@@ -80,8 +80,8 @@ export default class ListAssociate extends React.Component{
            <Menu/>
             <div className="container">
                 <div className="header">
-                    <div>
-                        <BreadCrumb model={this.state.items} home={this.state.home} />
+                    <div >
+                        <BreadCrumb model={this.state.items} home={this.state.home} className = "breadCrumb" />
                     </div>
                 </div>
 
@@ -90,6 +90,7 @@ export default class ListAssociate extends React.Component{
                         associates ={this.state.associate3}
                         delete = {this.delete}
                         editar = {this.update}
+                
                     />
                     
                 </div>

@@ -22,34 +22,40 @@ export default props =>{
             <div className="card">                
                 <Card>
                     <div className="left">
-                    <p className="tipo">
-                            {associate.tipo}
-                        </p>
-                        <label className="lb">Nome</label>
-                        <p >
-                            {associate.nome}
-                        </p>
-                        <label className="lb">Email</label>
-                        <p>
-                            {associate.email}
-                        </p>
-                        <label className="lb">Telefone</label>
-                        <p>
-                            {associate.telefone}
-                        </p>
-                        <label className="lb">Link Whatsapp</label>
-                        <p >
-                            {associate.linkWhatsapp}
-                        </p>
-                        <p>QrCode</p>
+                        <div className='divTipo'>
+                        <label className="lb">Tipo</label>
+                            <p className="tipo">
+                                {associate.tipo}
+                            </p>
+                        </div>
+                        <div className='divNome'>
+                            <label className="lb">Nome</label>
+                                 <p > {associate.nome}</p>
+                        </div>
+                        <div className='divEmail'>
+                            <label className="lb">Email</label>
+                                <p>{associate.email}</p>
+                        </div>
+                        <div className='divTelefone'>
+                            <label className="lb">Telefone</label>
+                                <p>{associate.telefone}</p>
+                        </div>
+                        <div className='divLinkWhatsapp'>
+                            <label className="lb">Link Whatsapp</label>
+                            <p >{associate.linkWhatsapp}</p>
+                        </div>
+                        <div className='divQrCode'>
+                            <label className="lb">QrCode</label>
+                            <p>QrCode</p>
+                        </div>
                     </div>
 
                     <div className="card-butons">
-                     <div className="bt">
+                        <div className="bt">
                         <a href="/createAssociate">
                             <Button className="bt" severity="warning" raised><FontAwesomeIcon icon={faPlus} style={{color: "#0b6429",}} /></Button>
                         </a>
-                    </div>
+                        </div>
 
                         <Button className="bt" onClick={e => props.editar(associate.id)}
                         title="Editar" severity="warning" aria-label="Editar">

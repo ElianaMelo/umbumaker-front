@@ -3,6 +3,35 @@
     border-color: #0c9213;
 }
 
+.left{
+    display: flex;
+}
+
+.divTipo{
+    margin-left: 3px;
+    margin-right: 20px;
+}
+.divNome{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.divEmail{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.divTelefone{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.divLinkWhatsapp{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.divQrCode{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .left .tipo{
     color: #0a0a09;
     margin-left: 1px;
@@ -18,6 +47,7 @@
 .card-butons{
     display: flex;
     flex-direction: row-reverse;
+    margin-top: 0px;
 }
 
 .card-butons .bt {
