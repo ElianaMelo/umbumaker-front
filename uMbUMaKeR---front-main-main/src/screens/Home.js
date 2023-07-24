@@ -1,6 +1,6 @@
 import './Home.css';
-import MenuLeft from '../components/Menu/MenuLeft';
+import Menu from '../components/Menu/Menu';
 export default function Home() {
-    return( <MenuLeft/>)
+    return( <Menu/>)
     
 }

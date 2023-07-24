@@ -8,11 +8,11 @@ import { InputText } from "primereact/inputtext";
 import { BreadCrumb } from "primereact/breadcrumb";
 import { Button } from 'primereact/button';
 
-import MenuLeft from "../../components/Menu/MenuLeft";
+import Menu from "../../components/Menu/Menu"
 
 import AssociateService from "../../services/AssociateService";
 
-export default class UpdateAssociate extends React.Component{
+export default class Update extends React.Component{
 
     state = {
         items:[{ label: 'Associados', url:"/associates" }, 
@@ -30,7 +30,7 @@ export default class UpdateAssociate extends React.Component{
         password:'',
         telefone:'',
         linkwhatsapp:'',
-        qrcode:'[...]',
+        qrcode:'',
         toast:''
     }
 
@@ -107,7 +107,7 @@ export default class UpdateAssociate extends React.Component{
     render() {
         return(
             <>
-            <MenuLeft/>
+            <Menu/>
             <div className="container">
                 <div className="header">
                 <Toast ref={(el) => (this.state.toast = el)} />

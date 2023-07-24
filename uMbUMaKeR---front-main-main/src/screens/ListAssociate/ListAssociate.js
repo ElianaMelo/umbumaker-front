@@ -1,29 +1,30 @@
 import React from "react";
-//import CardDeColaboradores from '../../components/CardDeColaboradores/CardDeColaboradores';
 import './ListAssociate.css';
 
 import CardAssociate from "../../components/CardListAssociate/CardListAssociates";
+import AssociateGallery from "../../components/Gallery/AssociateGallery";
 
 import { BreadCrumb } from 'primereact/breadcrumb';
 
 import AssociateService from "../../services/AssociateService";
 
-import MenuLeft from "../../components/Menu/MenuLeft";
+import Menu from "../../components/Menu/Menu"
 
 export default class ListAssociate extends React.Component{
     state = {
-        items:[{ label: 'Associados', url:"/associates" }],
-
+        items:[{label: 'Associados', url:"/associates" }],
         home: {icon: 'pi pi-home ', url: '/' },
-            associate3:[
+        associates:[
             {
                 id:'',
                 nome:'',
                 email:'',
+                senha:'',
                 telefone:'',
                 linkWhatsapp:'',
+                ativo:'',
                 tipo:'',
-                status:'',
+                qrcode:''
             }
         ]
     }
@@ -31,24 +32,23 @@ export default class ListAssociate extends React.Component{
     constructor(){
         super();
         this.service = new AssociateService();
-    }
-
-    
+    } 
 
     componentDidMount(){
         this.findAll();
         console.log(this.findAll());
     }
 
-    findAll = () => {
+    findAll = async () => {
         
-        this.service.get('/all')
+        await this.service.get('')
             .then(response => {
                 const associates2 = response.data;
                 
-                this.setState({associates2})
+                this.setState(associates2)
 
-                console.log(this.state.associate3);
+                console.log(associates2);
+                console.log(this.state.associates);
             }
             ).catch(error => {
                 console.log(error.response);
@@ -74,10 +74,16 @@ export default class ListAssociate extends React.Component{
         
     }
 
+    listar = (associates) =>{
+        for ( let cont in associates) {
+            return cont;
+        }
+    }
+
     render(){
         return(
             <>
-           <MenuLeft/>
+           <Menu/>
             <div className="container">
                 <div className="header">
                     <div >
@@ -86,8 +92,9 @@ export default class ListAssociate extends React.Component{
                 </div>
 
                 <div className="associates">
+                    <AssociateGallery/>
                     <CardAssociate 
-                        associates ={this.state.associate3}
+                        associates ={this.state.associates}
                         delete = {this.delete}
                         editar = {this.update}
                 

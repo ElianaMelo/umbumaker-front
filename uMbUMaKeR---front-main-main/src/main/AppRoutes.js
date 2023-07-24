@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MenuLeft from "../components/Menu/MenuLeft";
 
 
 import Home from "../screens/Home";
@@ -13,7 +12,6 @@ import ListAssociate from "../screens/ListarColaboradores/ListAssociate";
 function AppRouts(){
     return(
         <Router>
-           
            <Routes>
                 <Route  path="/" element={<Home/>} exact ></Route>
                 <Route  path="/login" element={<Login/>} exact ></Route>
@@ -23,7 +21,6 @@ function AppRouts(){
                 <Route element={<UpdateAssociate/>} path="/updateAssociate/:id"></Route>
                 
            </Routes>
-           
         </Router>
     )
 }

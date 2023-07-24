@@ -17,19 +17,21 @@
     margin-right: 2vw;
 }
 
-.input-texts .input-cidade{
+.input-texts{
     width: 15vw;
 }
 
-.input-texts .input-dois{
-    width: 15vw;
-    margin-right: 2vw;
-}
 .bts{
     display: flex;
     flex-direction: row-reverse;
    
 }
 .bts .bt{
+    flex-direction: row-reverse;
     margin: 10px;
+}
+.error{
+    color: red;
+    flex-direction: column;
+    margin-top: 50px;
 }

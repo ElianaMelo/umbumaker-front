@@ -8,14 +8,14 @@ import { faPlus, faTrashAlt, faPenToSquare} from '@fortawesome/free-solid-svg-ic
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default props =>{
-    const rows = props.associates.map(associate =>{
+    const [rows, setRows] = props.associates.map(associate =>{
         if(associate.id === ''){
             <Card>
                 <div id="status" className="center">
                         <p>
                             SEM INFORMAÇÃO
                         </p>
-                    </div>
+                </div>
             </Card>
         }
         return(
@@ -24,10 +24,13 @@ export default props =>{
 
                 <div className="divCreat">
                     <a href="/createAssociate">
-                         <Button className="btCreat" severity="warning" raised><FontAwesomeIcon icon={faPlus} style={{color: "#0b6429",}} /></Button>
+                         <Button className="btCreat" 
+                         severity="warning" 
+                         raised>
+                            <FontAwesomeIcon icon={faPlus}
+                          style={{color: "#0b6429",}} /></Button>
                     </a>
                 </div>  
-
                 <Card>
                     <div className="left">
                         <div className='divTipo'>

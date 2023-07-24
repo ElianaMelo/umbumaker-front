@@ -1,32 +1,35 @@
 import axios from "axios";
 
-const httpCliente = axios.create({
-    baseURL:'http://localhost:8080/'
-});
 
 export default class ApiService {
     constructor(endpoint){
+
         this.endpoint = endpoint;
+
+        this.httpCliente = axios.create({
+            baseURL:'http://localhost:8080/'
+        });
+        
     }
     
     post(url, params){
         url = this.buildUrl(url);
-        return httpCliente.post(url, params);
+        return this.httpCliente.post(url, params);
     }
 
     put(url, params){
         url = this.buildUrl(url);
-        return httpCliente.put(url, params);
+        return this.httpCliente.put(url, params);
     }
 
     delete(url){
         url = this.buildUrl(url);
-        return httpCliente.delete(url);
+        return this.httpCliente.delete(url);
     }
 
     get(url){
         url = this.buildUrl(url);
-        return httpCliente.get(url);
+        return this.httpCliente.get(url);
     }
 
     buildUrl(url){

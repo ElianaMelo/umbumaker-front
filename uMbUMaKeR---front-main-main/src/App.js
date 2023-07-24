@@ -8,8 +8,10 @@ import { Route, Routes } from 'react-router-dom';
 import  Login from "./screens/Login"
 import Home from './screens/Home'
 import UpdateAssociate from "./screens/UpdateAssociate/UpdateAssociate";
+
 import CreateAssociate from "./screens/CreateAssociate/CreateAssociate";
 import ListAssociate from "./screens/ListAssociate/ListAssociate"
+
 
 function App() {
   return (
