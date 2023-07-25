@@ -34,26 +34,21 @@ export default class ListAssociate extends React.Component{
         this.service = new AssociateService();
     } 
 
-    componentDidMount(){
-        this.findAll();
-        console.log(this.findAll());
-    }
-
-    findAll = async () => {
-        
+    async componentDidMount(){
         await this.service.get('')
             .then(response => {
-                const associates2 = response.data;
+                const associates = response.data;
                 
-                this.setState(associates2)
+                this.setState({associates})
 
-                console.log(associates2);
+                console.log(associates);
                 console.log(this.state.associates);
             }
             ).catch(error => {
                 console.log(error.response);
             }
             );
+        
     }
 
 
@@ -74,12 +69,6 @@ export default class ListAssociate extends React.Component{
         
     }
 
-    listar = (associates) =>{
-        for ( let cont in associates) {
-            return cont;
-        }
-    }
-
     render(){
         return(
             <>
@@ -92,7 +81,6 @@ export default class ListAssociate extends React.Component{
                 </div>
 
                 <div className="associates">
-                    <AssociateGallery/>
                     <CardAssociate 
                         associates ={this.state.associates}
                         delete = {this.delete}

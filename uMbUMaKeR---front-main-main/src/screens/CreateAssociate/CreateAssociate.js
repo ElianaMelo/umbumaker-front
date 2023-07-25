@@ -20,25 +20,21 @@ export default class CreateAssociate extends React.Component{
 
     state = {
         items:[{ label: 'Associados', url:"/associates" }, { label: 'Cadastrar'}],
-
         home: {icon: 'pi pi-home ', url: '/' },
-
-        status: [
-            {stt:'ATIVO'},{stt:'NÃO ATIVO'}
+        associates:[
+            {
+                id:'',
+                nome:'',
+                email:'',
+                senha:'',
+                telefone:'',
+                linkWhatsapp:'',
+                ativo:({stt:'ATIVO'},{stt:'NÃO ATIVO'}),
+                tipo:({tipo:'TUTOR'},{tipo:'GESTOR'},{tipo:'ASSOCIADO'}),
+                qrcode:''
+            }
         ],
-        associados: [
-            {tipo:'TUTOR'},{tipo:'GESTOR'},{tipo:'ASSOCIADO'}
-        ],
-        estado:{stt:''},
-        associado:{tipo:''},
-
-        nome:'',
-        email:'',
-        password:'',
-        telefone:'',
-        linkWhatsapp:'',
-        qrCode:'',
-
+       
         toast:'',
 
         msgDeErro:'',
@@ -99,11 +95,11 @@ export default class CreateAssociate extends React.Component{
             {
                nome:this.state.nome,
                email:this.state.email,
-               senha:this.state.password,
+               senha:this.state.senha,
                telefone: this.state.telefone,
                linkWhatsapp:this.state.linkWhatsapp,
-               ativo:this.state.status.stt,
-               tipo:this.state.associados.tipo, 
+               ativo:this.state.ativo.stt,
+               tipo:this.state.tipo.tipo, 
                qrCode:this.state.qrCode    
 
        }).then ( (response) =>{

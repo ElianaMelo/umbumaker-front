@@ -7,9 +7,7 @@ function AssociateGallery(){
         'http://localhost:contasacesso')
     
 
-    return(
-
-    );
+    
 
 }
 

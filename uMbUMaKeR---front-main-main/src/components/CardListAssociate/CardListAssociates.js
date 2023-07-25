@@ -8,7 +8,7 @@ import { faPlus, faTrashAlt, faPenToSquare} from '@fortawesome/free-solid-svg-ic
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default props =>{
-    const [rows, setRows] = props.associates.map(associate =>{
+    const rows = props.associates.map(associate =>{
         if(associate.id === ''){
             <Card>
                 <div id="status" className="center">
