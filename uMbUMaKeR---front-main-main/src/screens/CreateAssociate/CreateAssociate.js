@@ -16,34 +16,54 @@ import Menu from "../../components/Menu/Menu";
 import AssociateService from "../../services/AssociateService";
 
 import './CreateAssociate.css'
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Enviando form");
+};
+
 export default class CreateAssociate extends React.Component{  
 
-    state = {
-        items:[{ label: 'Associados', url:"/associates" }, { label: 'Cadastrar'}],
-        home: {icon: 'pi pi-home ', url: '/' },
-        associates:[
-            {
-                id:'',
-                nome:'',
-                email:'',
-                senha:'',
-                telefone:'',
-                linkWhatsapp:'',
-                ativo:({stt:'ATIVO'},{stt:'NÃO ATIVO'}),
-                tipo:({tipo:'TUTOR'},{tipo:'GESTOR'},{tipo:'ASSOCIADO'}),
-                qrcode:''
-            }
-        ],
-       
+    constructor(props){
+        super(props);
+
+        this.state = {
+            items:[{ label: 'Associados', url:"/associates" }, { label: 'Cadastrar'}],
+            home: {icon: 'pi pi-home ', url: '/' },
+            associados:[
+                {
+                    id:'',
+                    nome:'',
+                    email:'',
+                    senha:'',
+                    telefone:'',
+                    linkWhatsapp:'',
+                    ativo:'',
+                    tipo:'',
+                    qrcode:''
+                }
+            ],
+
+            tipoAssociateSelectItems: [
+				{ label: 'ASSOCIADO', value: 'ASSOCIADO' },
+				{ label: 'TUTOR', value: 'TUTOR' },
+				{ label: 'GESTOR', value: 'GESTOR' }
+			],
+			tipoAssociate: '',
+
+            ativoSelectItems: [
+				{ label: 'ATIVO', value: true},
+				{ label: 'NÃO ATIVO', value: false }
+				
+			],
+			ativo: '',
+
         toast:'',
 
         msgDeErro:'',
         error:'',
         errorEmail:''
-    }
-
-    constructor(){
-        super();
+        }
         this.service = new AssociateService();
     }
 
@@ -93,16 +113,17 @@ export default class CreateAssociate extends React.Component{
     save = async () =>{
         await this.service.create(
             {
-               nome:this.state.nome,
-               email:this.state.email,
-               senha:this.state.senha,
-               telefone: this.state.telefone,
-               linkWhatsapp:this.state.linkWhatsapp,
-               ativo:this.state.ativo.stt,
-               tipo:this.state.tipo.tipo, 
-               qrCode:this.state.qrCode    
-
-       }).then ( (response) =>{
+                nome:this.state.nome,
+                email:this.state.email,
+                senha:this.state.senha,
+                telefone: this.state.telefone,
+                linkWhatsapp:this.state.linkWhatsapp,
+                ativo:this.state.ativo,
+                tipo:this.state.tipoAssociate, 
+                qrCode:this.state.qrCode    
+ 
+        }
+       ).then ( (response) =>{
             this.state.toast.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro realizado!' });
             this.delay(2000);
             window.location.href = `/associates`;
@@ -120,11 +141,16 @@ export default class CreateAssociate extends React.Component{
     reject = () => {
         this.state.toast.show({ severity: 'warn', summary: 'Regeitado', detail: 'Cadastro Cancelado!', life: 3000 });
     };
+
+    
+    
+
     render(){
         return(
             <>
             <Menu/>
             <div className="container">
+            <form onSubmit={handleSubmit}>
                 <div className="header">
                     <Toast ref={(ex) => (this.state.toast = ex)} />
                     <div className="header">
@@ -135,8 +161,9 @@ export default class CreateAssociate extends React.Component{
                 <div className="input-texts">
                     <div className="input-um">
                         <InputText id="nome" className="borderColorEdit" type="text"
-                         value={this.state.nome}
-                        onChange={(e) => { this.setState({nome: e.target.value }) }} />
+                        onChange={(e) => { this.setState({nome: e.target.value }) }}
+                        value={this.state.nome}
+                         />
                         {this.state.error && <span className="error">{this.state.error}</span>}
                     </div>
                 </div>
@@ -144,35 +171,39 @@ export default class CreateAssociate extends React.Component{
                 <label htmlFor="email">E-mail</label>
                 <div className="input-texts">
                     <div className="input-um">
-                        <InputText className="borderColorEdit" type="text" 
+                        <InputText type="text" 
+                        value={this.state.email}
                        onChange={(e) => { this.setState({email: e.target.value }) }}/>
                        {this.state.errorEmail && <span className="error">{this.state.errorEmail}</span>}
                    </div>
+                </div>
+                <br/>
+                <label htmlFor="senha">Senha</label>
+                <div className="input-texts">                    
+                    <div className="input-dois">
+                        <InputText type="text"
+                        value={this.state.senha}
+                        onChange={(e) => { this.setState({senha: e.target.value }) }}/>
+                        {this.state.error && <span className="error">{this.state.error}</span>}
+                    </div>
                 </div>
                 <br/>
                 <label htmlFor="telefone">Telefone</label>
                 <div className="input-texts">
                     <div className="input-um">
                         <InputText type="text" 
+                        value={this.state.associados.telefone}
                         onChange={(e) => { this.setState({telefone: e.target.value })}}/>
                          {this.state.error && <span className="error">{this.state.error}</span>}
                     </div>
                                  
                 </div>
                 <br/>
-                <label htmlFor="password">Senha</label>
-                <div className="input-texts">                    
-                    <div className="input-dois">
-                        <InputText type="password"onChange={(e) => { this.setState({password: e.target.value }) }}/>
-                        {this.state.error && <span className="error">{this.state.error}</span>}
-                    </div>
-                     
-                </div>
-                <br/>
                 <label htmlFor="linkWhatsapp">Link do Whatsapp</label>
                 <div className="input-texts">
                     <div className="input-um">
                         <InputText  type="text"
+                        value={this.state.associados.linkWhatsapp}
                         onChange={(e) => { this.setState({linkWhatsapp: e.target.value }) }}/>
                         {this.state.error && <span className="error">{this.state.error}</span>}
                     </div>
@@ -180,21 +211,25 @@ export default class CreateAssociate extends React.Component{
                 </div>
                 <br/>
                 <div className="input-texts">
-                        <Dropdown id="seletor" 
-                        value={this.state.estado} 
-                        onChange={(e) => this.setState({estado: this.estado = e.value})} 
-                        options={this.state.status} 
-                        optionLabel="stt" 
-                        placeholder="Status"/>
+                        <Dropdown
+                        value={this.state.tipoAssociate}
+                        options={this.state.tipoAssociateSelectItems}
+                        onChange={e => {
+                            this.setState({ tipoAssociate: e.value });
+                        }}
+                        placeholder='Selecione o tipo'
+                        />
                 </div>
                 <br/>
                 <div className="input-texts">
-                        <Dropdown id="seletor" 
-                        value={this.state.associado} 
-                        onChange={(e) => this.setState({associado: this.associado = e.value})} 
-                        options={this.state.associados} 
-                        optionLabel="tipo" 
-                        placeholder="Associado"/>
+                    <Dropdown
+                        value={this.state.ativo}
+                        options={this.state.ativoSelectItems}
+                        onChange={e => {
+                            this.setState({ ativo: e.value });
+                        }}
+                        placeholder='Selecione o status'
+                    />
                 </div>
                 <br/>
                 </div>
@@ -212,7 +247,7 @@ export default class CreateAssociate extends React.Component{
                     <a href="/associates"><Button label="CANCELAR" ></Button></a>
                 </div>
                 </div>
-                
+                </form>    
             </div>
             </>
         )

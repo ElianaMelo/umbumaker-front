@@ -6,15 +6,15 @@ export default class AssociateService extends ApiService{
     }
 
     create(obj){
-        return this.post(obj)
+        return this.post('',obj);
     }
 
     update(id,obj){
-        return this.put(`/${id}`);
+        return this.put(`/${id}`,obj);
     }
 
     delete(id){
-        return super.delete(`/${id}`)
+        return super.delete(`/${id}`);
     }
     
     findAll(){
